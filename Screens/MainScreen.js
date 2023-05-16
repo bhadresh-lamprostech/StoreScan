@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
-import HomeScreen from './HomeScreen';
+import Filemanager from './Filemanager';
 import ProfileScreen from './ProfileScreen';
 import ScannerScreen from './ScannerScreen';
 
@@ -14,10 +14,10 @@ const MainScreen = () => {  // Rename the component here
         tabBarIcon: ({ color, size }) => {
           let iconName;
 
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Scanner') {
+          if (route.name === 'Scanner') {
             iconName = 'camera';
+          } else if (route.name === 'Files') {
+            iconName = 'file';
           } else if (route.name === 'Profile') {
             iconName = 'user';
           }
@@ -26,8 +26,12 @@ const MainScreen = () => {  // Rename the component here
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+        {/* if (route.name === 'Home') {
+            iconName = 'file'; */}
+      
+      
       <Tab.Screen name="Scanner" component={ScannerScreen} />
+      <Tab.Screen name="Files" component={Filemanager} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
